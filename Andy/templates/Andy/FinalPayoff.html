@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block content %}
+<p>
+    Your final payoff is : {{ final_payoff }} <br>
+    The rounds chosen at random to define your payoff are: {{ random_round_payoff_1}} and {{ random_round_payoff_2 }}<br>
+    You have been paid according to your expressed beliefs in at least one of those selected rounds.<br>
+
+        {% if paidinPoint1or2_draw1 == 1 and random_method_payoff_1 == 1 %}
+    You have been paid according to Point 1) in the round {{ random_round_payoff_1 }}
+    {% endif %}
+
+    {% if paidinPoint1or2_draw1 == 1 and random_method_payoff_1 == 0 %}
+    You have been paid according to Point 2) in the round {{ random_round_payoff_1 }}
+    {% endif %}
+
+    {% if paidinPoint1or2_draw2 == 1 and random_method_payoff_2 == 0 %}
+    You have been paid according to Point 2) in the round {{ random_round_payoff_2 }}
+    {% endif %}
+
+    {% if paidinPoint1or2_draw2 == 1 and random_method_payoff_1 == 1 %}
+    You have been paid according to Point 1) in the round {{ random_round_payoff_2 }}
+    {% endif %}
+
+
+    {% if paidinPoint1or2_draw1 == 0 %}
+    You have not been paid according to neither Point 1) or Point 2) in the round {{ random_round_payoff_1 }}
+    {% endif %}
+
+    {% if paidinPoint1or2_draw2 == 0 %}
+    You have not been paid according to neither Point 1) or Point 2) in the round {{ random_round_payoff_2 }}
+    {% endif %}
+
+
+    <br>
+</p>
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+{% endblock %}

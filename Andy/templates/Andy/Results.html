@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block content %}
+<p><h2>Results</h2><br>
+    {% if num_round == 1 or num_round == 5 or num_round == 10 or num_round == 11 or num_round == 15 %}
+    The result of Point 2):<br> <br>
+    {% endif %}
+
+    The employer offered the wage: {{ offre_wage }} <br>
+    The worker chose the effort: {{ effort }}<br>
+    Your payoff in this round is: {{ payoff }}<br>
+    The employer's payoff is: {{ payoff_other }}
+    <br>
+</p>
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+{% endblock %}

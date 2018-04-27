@@ -1,0 +1,78 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block content %}
+<p>
+    <h2>Effort Choice</h2>
+    <h4>You are in round {{ num_round }}.<br><br>
+    The employer has offered you the following wage: {{ offre_wage }} <br><br>
+    Select an effort level between .0 and {{ effort_max|floatformat:1 }}. <br><br>
+    An effort level higher than {{ effort_max|floatformat:1 }} will give you negative payoff.<br><br>
+    Note that we display your payoff and your employer's payoff (given your potential effort selection) below.
+    <br></h4>
+    {% formfield group.effort %}
+    <br>
+    You will earn : <br>
+    {{ offre_wage }} - <span id="id_effort_calcul"> </span><sup>2</sup>/2 = <span id="resultats"> </span><br>
+    <br>
+    The employer will earn: </br>
+    ({{ group.actuale }} - {{ offre_wage }}) * <span id="id_effort_calcul2"> </span> = <span id="resultats2"> </span><br>
+
+
+</p>
+
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+<p>
+    {% include Constants.instructions_template %}
+</p>
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        var myVar = setInterval(function(){ myTask() }, 1000);
+
+        function round(value, decimals) {
+        return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+        }
+
+        function myTask(){
+        effort = document.getElementById("id_effort").value
+        document.getElementById("id_effort_calcul").innerHTML = effort
+        wage = {{ offre_wage | json }}
+        document.getElementById("resultats").innerHTML = round(wage - (effort)**2/2,1)
+        }
+
+;
+    </script>
+
+    <script>
+        var myVar = setInterval(function(){ myTaskadditional() }, 1000);
+
+        function round(value, decimals) {
+        return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+        }
+
+        function check(value) {
+        if (value < 0) {
+            return "Negative value";
+        } else {
+            return value
+        }
+        }
+
+        function myTaskadditional(){
+        effort = document.getElementById("id_effort").value
+        document.getElementById("id_effort_calcul2").innerHTML = effort
+        wage = {{ offre_wage | json }}
+        actuale = {{ group.actuale | json }}
+        net = actuale - wage
+        document.getElementById("resultats2").innerHTML = round(net*(effort),1)
+        }
+
+;
+    </script>
+{% endblock %}

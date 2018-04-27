@@ -1,0 +1,30 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+
+{% block content %}
+<p>
+    <h2>Summary of the instructions</h2>
+
+<p>
+
+
+    <ul>
+    <li>	We will randomly assign you to one of two roles: employer or worker. Your role will not change during the experiment. </li>
+    <li>	We randomly assign one worker to one employer. This is the employer-worker pair. These pairs do not change during the experiment. </li>
+    <li>	Each period, the employer receives an endowment and uses this endowment to pay a wage to the worker. </li>
+    <li>	Once the worker receives a wage offer, the worker will respond by selecting a level of costly effort. </li>
+    <li>	Employer earnings for each period are (Endowment - wage)*effort.</li>
+    <li>	Worker earnings for each period are wage - cost of effort.</li>
+    <li>	The endowment resets each period. Employers do not accumulate money across periods. </li>
+    <li>	Employers select a new wage each period. Workers select a new level of costly effort each period. </li>
+    <li>	There may or may not be an economic shock during this experiment. If this happens, the endowment received by the employer at the beginning of each period will change. </li>
+    <li>	If there is an economic shock, all workers and all employers will learn of this shock at the same time. The shock will impact all endowments in the same way.  </li>
+    </ul>
+
+
+</ul>
+
+
+</p>
+{% endblock %}

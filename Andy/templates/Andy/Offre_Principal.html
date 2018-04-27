@@ -1,0 +1,33 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block content %}
+<h2>Wage Offer</h2>
+{% if num_round != 1 and num_round != 5 and num_round != 10 and num_round != 11 and num_round != 15 %}
+<h4>You are in round {{ num_round }}.<br><br>
+{% endif %}
+{% if num_round == 1 or num_round == 5 or num_round == 10 or num_round == 11 or num_round == 15 %}
+
+<h4>This is Point 2): <br><br>
+As in every normal period, you will make a wage offer to your employer. Earnings determined by this wage offer are the same as in any other period.</h4>
+</h4>
+{% endif %}
+
+<h4>
+    You may now make a wage offer to your employee. <br><br>
+    Please, select a wage level to send
+    between 1 and {{group.actuale}}.
+
+    <br>
+    <br>
+    <br>
+    {% formfield group.wage %}
+</h4>
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+
+<p>
+    {% include Constants.instructions_template %}
+</p>
+{% endblock %}

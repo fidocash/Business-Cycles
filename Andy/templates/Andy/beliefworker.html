@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block content %}
+<h4>
+    This is Point 1): <br><br>
+    Please, select a wage level that you think the firm will send to you
+    between 1 and {{group.actuale}}. </h4>
+In case you want to re-read a description of Point 1), you will find a paragraph describing Point 1) on the bottom of this page.<br>
+
+    <br>
+    {% formfield player.wagebelief %}
+</p>
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+
+<p>
+<h3>This is a reminder of Point 1):</h3>
+
+We will ask you to provide your guesses about what effort level your worker will provide for each possible wage.<br>
+You can increase your final earnings according to your accuracy.<br><br>
+
+<u>Accuracy of Guesses:</u> For each possible wage, you will provide your best guess about how much effort your worker
+will provide for that wage. We also ask the worker how much effort they are willing to provide for each wage.
+<br>
+<br>
+<br>
+
+You will earn money as follows:
+
+<br>
+<ul>
+    <li>the computer will randomly select one of your guesses.</li>
+    <li>If the guess is within 0.1 of the actual amount of effort, then you will $XX. Otherwise, you will earn nothing.</li>
+</ul>
+
+
+
+<br>
+Suppose for example that:
+
+<ul>
+    <li>the computer selects the guess corresponding to a wage of 4</li>
+    <li>your guess is an effort of 2 for this wage</li>
+    <li>If the actual effort provided by the worker, is 1.9, 2, or 2.1, then you will earn $XX. If the worker agrees to provide any other effort level, then you earn nothing.</li>
+
+</ul>
+
+</p>
+{% endblock %}

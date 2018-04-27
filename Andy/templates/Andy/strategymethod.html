@@ -1,0 +1,179 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block app_styles %}
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c2;
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+<p> <h4>This is Point 2):<br><br>
+We will ask you how much effort you are willing to provide for each possible wage that the employer can offer.<br></h4>
+In case you want to re-read a description of Point 1), you will find a paragraph describing Point 2) on the bottom of this page.<br>
+
+<br>
+<br>
+
+</p>
+
+<table style="..." id = "t01">
+    <colgroup>
+       <col span="1" style="width: 15%;">
+       <col span="1" style="width: 50%;">
+       <col span="1" style="width: 15%;">
+       <col span="1" style="width: 15%;">
+    </colgroup>
+<tbody>
+<tr>
+<td style="width: 181px; text-align: center;"><b>Wages</b></td>
+<td style="width: 181px; text-align: center;"><b>Effort</b></td>
+<td style="..."><b>Your payoff</b></td>
+<td style="..."><b>Firm's payoff</b></td>
+</tr>
+<tr>
+<td style="width: 181px;">1</td>
+<td style="width: 181px;">{% formfield player.steffort1 %} </td>
+<td style="..."><span id="resultats1"> </span></td>
+<td style="..."><span id="fresultats1"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">2</td>
+<td style="width: 181px;">{% formfield player.steffort2 %}&nbsp;</td>
+<td style="..."><span id="resultats2"> </span></td>
+<td style="..."><span id="fresultats2"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">3</td>
+<td style="width: 181px;">{% formfield player.steffort3 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats3"> </span></td>
+<td style="..."><span id="fresultats3"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">4</td>
+<td style="width: 181px;">{% formfield player.steffort4 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats4"> </span></td>
+<td style="..."><span id="fresultats4"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">5</td>
+<td style="width: 181px;">{% formfield player.steffort5 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats5"> </span></td>
+<td style="..."><span id="fresultats5"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">6</td>
+<td style="width: 181px;">{% formfield player.steffort6 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats6"> </span></td>
+<td style="..."><span id="fresultats6"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">7</td>
+<td style="width: 181px;">{% formfield player.steffort7 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats7"> </span></td>
+<td style="..."><span id="fresultats7"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">8</td>
+<td style="width: 181px;">{% formfield player.steffort8 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats8"> </span></td>
+<td style="..."><span id="fresultats8"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">9</td>
+<td style="width: 181px;">{% formfield player.steffort9 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats9"> </span></td>
+<td style="..."><span id="fresultats9"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">10</td>
+<td style="width: 181px;">{% formfield player.steffort10%}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats10"> </span></td>
+<td style="..."><span id="fresultats10"> </span></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+</p>
+
+
+<p>
+    <h3>This is a reminder of Point 2):</h3>
+We will also ask you how much effort you are willing to provide for each possible wage that the employer can offer.
+<br>
+<br>
+
+Your earnings for this task are determined as follows: for whatever wage the employer actually offers, we will use the effort
+you agreed to provide at that wage level (described in point 1 above) as your actual effort response.
+<br>
+<br>
+
+For example, suppose you have agreed to provide some level of effort for each possible wage. Now, suppose that the employer
+agrees to offer a wage of $6 and that, during the effort response task described above, you agreed to provide effort 1.5 for a wage offer of $6.
+Then your earnings for this task are determined in the same way they are for a normal period where the employer offers a wage of $6 and you provide effort of 1.5 in response.
+<br>
+<br>
+
+</p>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var myVar = setInterval(function(){ myTask() }, 1000);
+
+        function round(value, decimals) {
+        return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+        }
+
+        function myTask(){
+        effort1 = document.getElementById("id_steffort1").value
+        effort2 = document.getElementById("id_steffort2").value
+        effort3 = document.getElementById("id_steffort3").value
+        effort4 = document.getElementById("id_steffort4").value
+        effort5 = document.getElementById("id_steffort5").value
+        effort6 = document.getElementById("id_steffort6").value
+        effort7 = document.getElementById("id_steffort7").value
+        effort8 = document.getElementById("id_steffort8").value
+        effort9 = document.getElementById("id_steffort9").value
+        effort10 = document.getElementById("id_steffort10").value
+        document.getElementById("resultats1").innerHTML = round(1 - (effort1)**2/2,2)
+        document.getElementById("resultats2").innerHTML = round(2 - (effort2)**2/2,2)
+        document.getElementById("resultats3").innerHTML = round(3 - (effort3)**2/2,2)
+        document.getElementById("resultats4").innerHTML = round(4 - (effort4)**2/2,2)
+        document.getElementById("resultats5").innerHTML = round(5 - (effort5)**2/2,2)
+        document.getElementById("resultats6").innerHTML = round(6 - (effort6)**2/2,2)
+        document.getElementById("resultats7").innerHTML = round(7 - (effort7)**2/2,2)
+        document.getElementById("resultats8").innerHTML = round(8 - (effort8)**2/2,2)
+        document.getElementById("resultats9").innerHTML = round(9 - (effort9)**2/2,2)
+        document.getElementById("resultats10").innerHTML = round(10 - (effort10)**2/2,2)
+        document.getElementById("fresultats1").innerHTML = round(9*(effort1),2)
+        document.getElementById("fresultats2").innerHTML = round(8*(effort2),2)
+        document.getElementById("fresultats3").innerHTML = round(7*(effort3),2)
+        document.getElementById("fresultats4").innerHTML = round(6*(effort4),2)
+        document.getElementById("fresultats5").innerHTML = round(5*(effort5),2)
+        document.getElementById("fresultats6").innerHTML = round(4*(effort6),2)
+        document.getElementById("fresultats7").innerHTML = round(3*(effort7),2)
+        document.getElementById("fresultats8").innerHTML = round(2*(effort8),2)
+        document.getElementById("fresultats9").innerHTML = round(1*(effort9),2)
+        document.getElementById("fresultats10").innerHTML = round(0,2)
+
+        }
+;
+    </script>
+{% endblock %}

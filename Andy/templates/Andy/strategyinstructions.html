@@ -1,0 +1,122 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block app_styles %}
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c2;
+}
+</style>
+
+{% endblock %}
+
+{% block content %}
+<h1></h1>
+
+{% if num_round == 1 %}
+<p>
+In addition to the normal periods described previously, you will also be asked some questions in some periods.
+    We will ask you to do two things:
+<ol>
+
+    <li>
+    to guess what wage the employer will offer for that period
+    </li>
+
+    <li>
+    to choose the amount of effort you are willing to provide for each possible wage offer
+    </li>
+</ol>
+</p>
+{% endif %}
+
+{% if num_round > 1 %}
+<p>
+Similarly to previous periods, you face the same questions.
+    To remind you, below we report the same descriptions of Point 1) and 2).<br><br>
+    We will ask you to do two things:
+<ol>
+
+    <li>
+    to guess what wage the employer will offer for that period
+    </li>
+
+    <li>
+    to choose the amount of effort you are willing to provide for each possible wage offer
+    </li>
+</ol>
+</p>
+{% endif %}
+
+
+<h3>Point 1):</h3>
+
+You will provide your best guess about what wage the employer will offer in this round.<br>
+You can increase your final earnings according to your accuracy.<br><br>
+
+<u>Accuracy of Guesses:</u> We will pay you based on the accuracy of your guess about this wage offer.
+If your guess matches the wage actually offered you will earn $5. Otherwise, you will earn nothing.
+<br>
+<br>
+<br>
+
+You will earn money as follows:
+
+<br>
+<ul>
+    <li>the computer will randomly select one of your guesses.</li>
+    <li>If the guess is within 0.1 of the actual amount of effort, then you will earn $5. Otherwise, you will earn nothing.</li>
+</ul>
+
+
+
+<br>
+Suppose for example that:
+
+<ul>
+    <li>the employer offers a wage equal to $4</li>
+    <li>if you guess that the offered wage will be $4, then you earn $5</li>
+    <li>If you guess that the wage equals any other possible number, then you earn nothing</li>
+
+</ul>
+
+<h3>Point 2):</h3>
+We will also ask you how much effort you are willing to provide for each possible wage that the employer can offer.
+<br>
+<br>
+
+Your earnings for this task are determined as follows: for whatever wage the employer actually offers, we will use the effort
+you agreed to provide at that wage level (described in point 1 above) as your actual effort response.
+<br>
+<br>
+
+For example, suppose you have agreed to provide some level of effort for each possible wage. Now, suppose that the employer
+agrees to offer a wage of $6 and that, during the effort response task described above, you agreed to provide effort 1.5 for a wage offer of $6.
+Then your earnings for this task are determined in the same way they are for a normal period where the employer offers a wage of $6 and you provide effort of 1.5 in response.
+<br>
+<br>
+
+<h3>Payoff payment in this period:</h3>
+<ul>
+<li>Your payoff in this period will be determined either by the accuracy of your guess about what effort the worker will provide
+(Point 1) or the wage the employer offers (Point 2).</li>
+    <li>The source of this additional payoff (Point 1 or Point 2) will be randomly
+chosen and communicated at the end of the experiment.</li>
+    <li>However, you will be able to see the result of Point 2) upon the end of this period.</li>
+
+</ul>
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+
+{% endblock %}

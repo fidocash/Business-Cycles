@@ -1,0 +1,174 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block app_styles %}
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c2;
+}
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+<h4>
+    This is Point 1): <br><br> Please complete the table below by moving the slider and choosing what level of effort you believe your worker will
+    provide for each possible wage: </h4>
+In case you want to re-read a description of Point 1), you will find a paragraph describing Point 1) on the bottom of this page.<br>
+<br>
+<table style="..." id = "t01" border="1" width="372" align="center">
+<tbody>
+<tr>
+<td style="width: 181px; text-align: center;">Wages</td>
+<td style="width : 50%">Guess on Effort</td>
+<td style="...">Worker's payoff</td>
+<td style="...">Your payoff</td>
+
+</tr>
+<tr>
+<td style="width: 181px;">1</td>
+<td style="width: 181px;">{% formfield player.eleffort1 %} </td>
+<td style="..."><span id="resultats1"> </span></td>
+<td style="..."><span id="fresultats1"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">2</td>
+<td style="width: 181px;">{% formfield player.eleffort2 %}&nbsp;</td>
+<td style="..."><span id="resultats2"> </span></td>
+<td style="..."><span id="fresultats2"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">3</td>
+<td style="width: 181px;">{% formfield player.eleffort3 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats3"> </span></td>
+<td style="..."><span id="fresultats3"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">4</td>
+<td style="width: 181px;">{% formfield player.eleffort4 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats4"> </span></td>
+<td style="..."><span id="fresultats4"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">5</td>
+<td style="width: 181px;">{% formfield player.eleffort5 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats5"> </span></td>
+<td style="..."><span id="fresultats5"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">6</td>
+<td style="width: 181px;">{% formfield player.eleffort6 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats6"> </span></td>
+<td style="..."><span id="fresultats6"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">7</td>
+<td style="width: 181px;">{% formfield player.eleffort7 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats7"> </span></td>
+<td style="..."><span id="fresultats7"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">8</td>
+<td style="width: 181px;">{% formfield player.eleffort8 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats8"> </span></td>
+<td style="..."><span id="fresultats8"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">9</td>
+<td style="width: 181px;">{% formfield player.eleffort9 %}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats9"> </span></td>
+<td style="..."><span id="fresultats9"> </span></td>
+</tr>
+<tr>
+<td style="width: 181px;">10</td>
+<td style="width: 181px;">{% formfield player.eleffort10%}&nbsp;&nbsp;</td>
+<td style="..."><span id="resultats10"> </span></td>
+<td style="..."><span id="fresultats10"> </span></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+</p>
+
+
+<h4>Reminder of Point 1):</h4>
+
+We will ask you to provide your guesses about what effort level your worker will provide for each possible wage.<br>
+You can increase your final earnings according to your accuracy.<br>
+
+<u>Accuracy of Guesses:</u> For each possible wage, you will provide your best guess about how much effort your worker
+will provide for that wage. We also ask the worker how much effort they are willing to provide for each wage.
+<br>
+<br>
+<br>
+
+You will earn money as follows:
+
+<br>
+<ul>
+    <li>the computer will randomly select one of your guesses.</li>
+    <li>If the guess is within 0.1 of the actual amount of effort, then you will $5. Otherwise, you will earn nothing.</li>
+</ul>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var myVar = setInterval(function(){ myTask() }, 1000);
+
+        function round(value, decimals) {
+        return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+        }
+
+        function myTask(){
+        effort1 = document.getElementById("id_eleffort1").value
+        effort2 = document.getElementById("id_eleffort2").value
+        effort3 = document.getElementById("id_eleffort3").value
+        effort4 = document.getElementById("id_eleffort4").value
+        effort5 = document.getElementById("id_eleffort5").value
+        effort6 = document.getElementById("id_eleffort6").value
+        effort7 = document.getElementById("id_eleffort7").value
+        effort8 = document.getElementById("id_eleffort8").value
+        effort9 = document.getElementById("id_eleffort9").value
+        effort10 = document.getElementById("id_eleffort10").value
+        document.getElementById("resultats1").innerHTML = round(1 - (effort1)**2/2,2)
+        document.getElementById("resultats2").innerHTML = round(2 - (effort2)**2/2,2)
+        document.getElementById("resultats3").innerHTML = round(3 - (effort3)**2/2,2)
+        document.getElementById("resultats4").innerHTML = round(4 - (effort4)**2/2,2)
+        document.getElementById("resultats5").innerHTML = round(5 - (effort5)**2/2,2)
+        document.getElementById("resultats6").innerHTML = round(6 - (effort6)**2/2,2)
+        document.getElementById("resultats7").innerHTML = round(7 - (effort7)**2/2,2)
+        document.getElementById("resultats8").innerHTML = round(8 - (effort8)**2/2,2)
+        document.getElementById("resultats9").innerHTML = round(9 - (effort9)**2/2,2)
+        document.getElementById("resultats10").innerHTML = round(10 - (effort10)**2/2,2)
+        document.getElementById("fresultats1").innerHTML = round(9*(effort1),2)
+        document.getElementById("fresultats2").innerHTML = round(8*(effort2),2)
+        document.getElementById("fresultats3").innerHTML = round(7*(effort3),2)
+        document.getElementById("fresultats4").innerHTML = round(6*(effort4),2)
+        document.getElementById("fresultats5").innerHTML = round(5*(effort5),2)
+        document.getElementById("fresultats6").innerHTML = round(4*(effort6),2)
+        document.getElementById("fresultats7").innerHTML = round(3*(effort7),2)
+        document.getElementById("fresultats8").innerHTML = round(2*(effort8),2)
+        document.getElementById("fresultats9").innerHTML = round(1*(effort9),2)
+        document.getElementById("fresultats10").innerHTML = round(0,2)
+
+        }
+;
+    </script>
+{% endblock %}

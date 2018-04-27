@@ -1,0 +1,105 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree_tags %}
+
+{% block app_styles %}
+
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+    text-align: center;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c2;
+}
+</style>
+
+{% endblock %}
+{% block content %}
+<h1></h1>
+You are in period {{ num_round }}
+{% if num_round == 1 %}
+<p>
+In addition to the normal periods described previously, you will also be asked some questions in some periods.
+    We will ask you to do two things:
+<ol>
+
+    <li>
+    to provide your best guess about what effort your worker will provide for each possible wage
+    </li>
+
+    <li>
+    to offer a wage (This is the same as in a normal period.)
+    </li>
+</ol>
+</p>
+{% endif %}
+
+{% if num_round > 1 %}
+<p>
+Similarly to previous periods, you face the same questions.
+    To remind you, below we report the same descriptions of Point 1) and 2).<br><br>
+    We will ask you to do two things:
+<ol>
+
+    <li>
+    to provide your best guess about what effort your worker will provide for each possible wage
+    </li>
+
+    <li>
+    to offer a wage (This is the same as in a normal period.)
+    </li>
+</ol>
+</p>
+{% endif %}
+
+<h3>Point 1):</h3>
+
+We will ask you to provide your guesses about what effort level your worker will provide for each possible wage.<br>
+You can increase your final earnings according to your accuracy.<br><br>
+
+<u>Accuracy of Guesses:</u> For each possible wage, you will provide your best guess about how much effort your worker
+will provide for that wage. We also ask the worker how much effort they are willing to provide for each wage.
+<br>
+<br>
+<br>
+
+You will earn money as follows:
+
+<br>
+<ul>
+    <li>the computer will randomly select one of your guesses.</li>
+    <li>If the guess is within 0.1 of the actual amount of effort, then you will $5. Otherwise, you will earn nothing.</li>
+</ul>
+
+
+
+<br>
+Suppose for example that:
+
+<ul>
+    <li>the computer selects the guess corresponding to a wage of 4</li>
+    <li>your guess is an effort of 2 for this wage</li>
+    <li>If the actual effort provided by the worker, is 1.9, 2, or 2.1, then you will earn $5. If the worker agrees to provide any other effort level, then you earn nothing.</li>
+
+</ul>
+
+<h3>Point 2):</h3>
+As in every normal period, you will make a wage offer to your employer. Earnings determined by this wage offer are the same as in any other period.
+
+<h3>Payoff payment in this period:</h3>
+<ul>
+<li>Your payoff in this period will be determined either by the accuracy of your beliefs about what effort the worker will provide (Point 1) or the effort the worker provides in response to your wage offer (Point 2).</li>
+<li>The source of this additional payoff (Point 1 or Point 2) will be randomly chosen and communicated at the end of the experiment.</li>
+<li>However, you will be able to see the result of Point 2) upon the end of this period.</li>
+</ul>
+
+<div>
+    <button class="btn btn-primary btn-large">Next</button>
+</div>
+
+{% endblock %}
